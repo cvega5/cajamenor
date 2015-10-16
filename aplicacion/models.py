@@ -23,7 +23,7 @@ class Movimiento(models.Model):
     fecha = models.DateField()
     valorTransaccion = models.DecimalField(max_digits=10, decimal_places=2)
     valorEnLetras = models.CharField(max_length = 300, blank=True)
-    descripcionMo = models.CharField(max_length = 200, blank=True)
+    descripcion = models.CharField(max_length = 300, blank=True)
     cajamenor = models.ForeignKey('CajaMenor')
     eliminado = models.BooleanField(default=False)
 

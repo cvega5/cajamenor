@@ -8,7 +8,7 @@ class CajaMenorAdmin(admin.ModelAdmin):
     list_display=('id','nombreCaja','usuario','totalDisponible')
 
 class MovimientoAdmin(admin.ModelAdmin):
-    list_display=('id','fecha','valorEnLetras','valorTransaccion','descripcionMo','cajamenor')
+    list_display=('id','fecha','valorEnLetras','valorTransaccion','descripcion','cajamenor')
 
 class DetMovimientoAdmin(admin.ModelAdmin):
     list_display=('id','rubro','movimiento')
