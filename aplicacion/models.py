@@ -24,20 +24,12 @@ class Movimiento(models.Model):
     valorTransaccion = models.DecimalField(max_digits=10, decimal_places=2)
     valorEnLetras = models.CharField(max_length = 300, blank=True)
     descripcion = models.CharField(max_length = 300, blank=True)
-    cajamenor = models.ForeignKey('CajaMenor')
-    eliminado = models.BooleanField(default=False)
+    idRubro     = models.IntegerField(default = 0)
+    cajamenor   = models.ForeignKey('CajaMenor')
+    eliminado   = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.valorTransaccion)
-
-class DetMovimiento(models.Model):
-    rubro = models.CharField(max_length = 40)
-    movimiento = models.ForeignKey('Movimiento')
-    eliminado = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.rubro
-
 
 class Parametro(models.Model):
     atributo        =models.CharField(max_length=50)

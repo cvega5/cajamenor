@@ -8,10 +8,7 @@ class CajaMenorAdmin(admin.ModelAdmin):
     list_display=('id','nombreCaja','usuario','totalDisponible')
 
 class MovimientoAdmin(admin.ModelAdmin):
-    list_display=('id','fecha','valorEnLetras','valorTransaccion','descripcion','cajamenor')
-
-class DetMovimientoAdmin(admin.ModelAdmin):
-    list_display=('id','rubro','movimiento')
+    list_display=('id','fecha','valorEnLetras','valorTransaccion','descripcion','idRubro','cajamenor')
 
 class ParametroAdmin(admin.ModelAdmin):
     list_display=('id','atributo','descripcion','estadoParametro')
@@ -24,6 +21,5 @@ class ValorParametroAdmin(admin.ModelAdmin):
 admin.site.register(Usuario,UsuarioAdmin)
 admin.site.register(CajaMenor,CajaMenorAdmin)
 admin.site.register(Movimiento,MovimientoAdmin)
-admin.site.register(DetMovimiento,DetMovimientoAdmin)
 admin.site.register(Parametro,ParametroAdmin)
 admin.site.register(ValorParametro,ValorParametroAdmin)
