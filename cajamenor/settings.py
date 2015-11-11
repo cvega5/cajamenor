@@ -56,7 +56,7 @@ ROOT_URLCONF = 'cajamenor.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["cajamenor/aplicacion/templates/"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
