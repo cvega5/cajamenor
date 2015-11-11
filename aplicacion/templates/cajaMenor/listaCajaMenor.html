@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block content %}
+<table id="tabla">
+  <tr>
+    <th>ID</th>
+    <th>Nombre de la Caja Menor</th>
+    <th>usuario asignado</th>
+    <th>Total Disponible</th>
+  </tr>
+  <tbody>
+    {% for CajaMenor in cajaMenor %}
+    <tr>
+      <td>{{CajaMenor.id}}</td>
+      <td>{{CajaMenor.nombreCaja}}</td>
+      <td>{{CajaMenor.usuario}}</td>
+      <td>{{CajaMenor.totalDisponible}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+{% block content %}
+<table id="tabla">
+  <tr>
+    <th>ID</th>
+    <th>Identificacion</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Contrase&ntilde;a</th>
+  </tr>
+  <tbody>
+    {% for Usuario in usuarios %}
+    <tr>
+      <td>{{Usuario.id}}</td>
+      <td>{{Usuario.identificacion}}</td>
+      <td>{{Usuario.nombre}}</td>
+      <td>{{Usuario.apellido}}</td>
+      <td>{{Usuario.contrasena}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

@@ -1,0 +1,32 @@
+{% load static %}
+<html>
+    <head>
+        <title>Caja Menor</title>
+        <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link href="{% static 'css/navbar.css'%}" rel="stylesheet">
+        <script src="{% static 'JavaScript/navbar.js' %}"></script>
+    </head>
+    <body>
+      <header>
+        <div class="menu_bar">
+           <a href="#" class="icono" onclick="menu()"><div id="menu">Menu</div><img src="{% static 'icons/th-menu.svg'%}" id="icono"></a>
+        </div>
+        <nav id="navbar" class="oculto">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          <li><a href="../cajaMenor">Caja Menor</a></li>
+          <li><a href="../usuarios">Usuarios</a></li>
+          <li><a href="#">Acerca de</a></li>
+        </ul>
+      </nav>
+      </header>
+
+      <div>
+        {% block content %}
+          {% endblock content %}
+      </div>
+    </body>
+</html>
