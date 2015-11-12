@@ -1,12 +1,14 @@
 {% extends "index.html" %}
 {% block content %}
-<table id="tabla">
+<table class="ui single line table">
+  <thead>
   <tr>
     <th>ID</th>
     <th>Nombre de la Caja Menor</th>
     <th>usuario asignado</th>
     <th>Total Disponible</th>
   </tr>
+</thead>
   <tbody>
     {% for CajaMenor in cajaMenor %}
     <tr>

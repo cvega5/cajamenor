@@ -1,0 +1,43 @@
+{% extends "index.html" %}
+{% block content %}
+
+<div id="cuadro">
+    <form id="formulario">
+        <h1>Agregar {{ modelo }}</h1><br>
+				<div class="ui form">
+
+	    	{% if formulario %}
+	    		{% if formulario.errors %}
+		    		<div class="ui negative message">
+			    	    <div class="header">Encontramos algunos problemas</div>
+			    	    <ul class="list">
+			    	        {% for error in formulario.errors %}
+			    	            <li>El campo <b>{{ error }}</b> es requerido.</li>
+			    	        {% endfor %}
+			    	    </ul>
+			    	</div>
+		    	{% endif %}
+					<form id="formulario" method="post" enctype="multipart/form-data" action="">
+			    	{% csrf_token %}
+
+			    	{% for campo in formulario %}
+						{{campo}}<br><br>
+			    	{% endfor %}
+			    	<!--{{formulario.as_p}}-->
+			    	<p>
+        <div class="ui buttons">
+            <input type="submit" class="ui positive button" value="Confirmar">
+          <div class="or"></div>
+          <button class="ui button" onclick="window.location.href='/{{respuesta}}'">Cancelar</button>
+        </div>
+    </form>
+</div>
+			</p>
+
+			    </form>
+		    {% endif %}
+		    </div>
+	    </div>
+	</div>
+
+{% endblock content %}

@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
-<table id="tabla">
+<table class="ui single line table">
+  <thead>
   <tr>
     <th>ID</th>
     <th>Identificacion</th>
@@ -8,6 +9,7 @@
     <th>Apellido</th>
     <th>Contrase&ntilde;a</th>
   </tr>
+</thead>
   <tbody>
     {% for Usuario in usuarios %}
     <tr>
@@ -20,4 +22,15 @@
     {% endfor %}
   </tbody>
 </table>
+<div id="cuadro">
+    <form id="formulario">
+        <h1>Agregar</h1><br>
+
+        <div class="ui buttons">
+          <button class="ui positive button" onclick="window.location.href='/agregar'" >Agregar</button>
+          <div class="or"></div>
+          <button class="ui button">Cancelar</button>
+        </div>
+    </form>
+</div>
 {% endblock content %}

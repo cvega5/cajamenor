@@ -21,5 +21,6 @@ urlpatterns = [
     url(r'^$', views.indexDefault),
     url (r'^admin/', include(admin.site.urls)),
     url (r'^usuarios/$', views.listaUsuarios),
+    url(r'^usuarios/agregar$', views.agregarUsuario),
     url (r'^cajaMenor/$', views.listaCajaMenor),
 ]

@@ -6,25 +6,23 @@
           <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <link href="{% static 'css/navbar.css'%}" rel="stylesheet">
-        <script src="{% static 'JavaScript/navbar.js' %}"></script>
+        <link href="{% static 'Semantic-UI-master\dist\semantic.min.css'%}" rel="stylesheet">
+        <link href="{% static 'Semantic-UI-master\dist\semantic.min.js'%}" rel="stylesheet">
+        <link href="{% static 'css\navbar.css'%}" rel="stylesheet">
+        <link href="{% static 'css\style.css'%}" rel="stylesheet">
+        <link href="{% static 'Semantic-UI-master\dist\semantic.min.js'%}" rel="stylesheet">
     </head>
     <body>
       <header>
-        <div class="menu_bar">
-           <a href="#" class="icono" onclick="menu()"><div id="menu">Menu</div><img src="{% static 'icons/th-menu.svg'%}" id="icono"></a>
+        <div class="ui top fixed menu">
+          <div class="item">Inicio</div>
+          <a class="item" href="../cajaMenor">Caja Menor</a>
+          <a class="item" href="../usuarios">Usuarios</a>
+          <a class="item" href="#">acerca de</a>
         </div>
-        <nav id="navbar" class="oculto">
-        <ul>
-          <li><a href="#">Inicio</a></li>
-          <li><a href="../cajaMenor">Caja Menor</a></li>
-          <li><a href="../usuarios">Usuarios</a></li>
-          <li><a href="#">Acerca de</a></li>
-        </ul>
-      </nav>
       </header>
-
-      <div>
+      <br><br><br><br>
+      <div id="Cuerpo">
         {% block content %}
           {% endblock content %}
       </div>
