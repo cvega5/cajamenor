@@ -20,7 +20,11 @@ from aplicacion import views
 urlpatterns = [
     url(r'^$', views.indexDefault),
     url (r'^admin/', include(admin.site.urls)),
+
     url (r'^usuarios/$', views.listaUsuarios),
-    url(r'^usuarios/agregar$', views.agregarUsuario),
+    url(r'^nuevo$', views.agregarUsuario),
+    url(r'^usuarios/nuevo$', views.agregarUsuario),
+
     url (r'^cajaMenor/$', views.listaCajaMenor),
+    url (r'^cajaMenor/nueva$', views.agregarCajaMenor),
 ]

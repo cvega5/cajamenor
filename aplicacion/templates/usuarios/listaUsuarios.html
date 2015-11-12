@@ -1,6 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
-<table class="ui single line table">
+<h1 class="page-header">Usuarios</h1>    
+<table class="ui celled table">
   <thead>
   <tr>
     <th>ID</th>
@@ -22,15 +23,4 @@
     {% endfor %}
   </tbody>
 </table>
-<div id="cuadro">
-    <form id="formulario">
-        <h1>Agregar</h1><br>
-
-        <div class="ui buttons">
-          <button class="ui positive button" onclick="window.location.href='/agregar'" >Agregar</button>
-          <div class="or"></div>
-          <button class="ui button">Cancelar</button>
-        </div>
-    </form>
-</div>
 {% endblock content %}

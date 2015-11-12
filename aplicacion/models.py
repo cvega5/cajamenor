@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 class Usuario(models.Model):
     identificacion = models.CharField(max_length = 15)
-    nombre = models.CharField(max_length = 20, blank=True)
-    apellido = models.CharField(max_length = 20, blank=True)
-    contrasena = models.CharField(max_length = 20, blank=True)
+    nombre = models.CharField(max_length = 20)
+    apellido = models.CharField(max_length = 20)
+    contrasena = models.CharField(max_length = 20)
     eliminado = models.BooleanField(default=False)
 
     def __str__(self):
@@ -23,8 +23,8 @@ class CajaMenor(models.Model):
 class Movimiento(models.Model):
     fecha = models.DateField()
     valorTransaccion = models.DecimalField(max_digits=10, decimal_places=2)
-    valorEnLetras = models.CharField(max_length = 300, blank=True)
-    descripcion = models.CharField(max_length = 300, blank=True)
+    valorEnLetras = models.CharField(max_length = 300)
+    descripcion = models.CharField(max_length = 300)
     idRubro     = models.IntegerField(default = 0)
     cajamenor   = models.ForeignKey('CajaMenor')
     eliminado   = models.BooleanField(default=False)

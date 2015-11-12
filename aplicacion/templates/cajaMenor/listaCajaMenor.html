@@ -1,5 +1,11 @@
 {% extends "index.html" %}
 {% block content %}
+<div id="cuadro">
+  <h3>¿Que desea hacer?</h3>
+        <div class="ui buttons">
+          <div class="ui blue button"  onclick="window.location.href='nueva'">Agregar </div>
+        </div>
+</div><br><br>
 <table class="ui single line table">
   <thead>
   <tr>
@@ -15,7 +21,7 @@
       <td>{{CajaMenor.id}}</td>
       <td>{{CajaMenor.nombreCaja}}</td>
       <td>{{CajaMenor.usuario}}</td>
-      <td>{{CajaMenor.totalDisponible}}</td>
+      <td>$ {{CajaMenor.totalDisponible}}</td>
     </tr>
     {% endfor %}
   </tbody>

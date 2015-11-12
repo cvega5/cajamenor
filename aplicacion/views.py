@@ -34,3 +34,6 @@ def listaCajaMenor(request):
 
 def agregarUsuario(request):
 	return agregar(request, UsuarioForm, respuesta = "usuarios", modelo = "Usuario")
+
+def agregarCajaMenor(request):
+    return agregar(request, CajaMenorForm, respuesta = "cajasMenores", modelo = "Caja Menor")
