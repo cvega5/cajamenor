@@ -1,18 +1,14 @@
 {% extends "index.html" %}
 {% block content %}
-<div id="cuadro">
-  <h3>¿Que desea hacer?</h3>
-        <div class="ui buttons">
-          <div class="ui blue button"  onclick="window.location.href='nueva'">Agregar </div>
-        </div>
-</div><br><br>
-<table class="ui single line table">
+<h1 class="page-header">Caja Menor</h1>
+<table class="table table-bordered">
   <thead>
   <tr>
     <th>ID</th>
     <th>Nombre de la Caja Menor</th>
     <th>usuario asignado</th>
     <th>Total Disponible</th>
+    <th></th>
   </tr>
 </thead>
   <tbody>
@@ -22,6 +18,7 @@
       <td>{{CajaMenor.nombreCaja}}</td>
       <td>{{CajaMenor.usuario}}</td>
       <td>$ {{CajaMenor.totalDisponible}}</td>
+      <td><a onclick="window.location.href='editaCaja/{{CajaMenor.id}}'"><i class="glyphicon glyphicon-pencil"></i> Editar</a></td>
     </tr>
     {% endfor %}
   </tbody>

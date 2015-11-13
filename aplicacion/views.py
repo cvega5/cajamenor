@@ -23,6 +23,19 @@ def agregar(request, form, respuesta, modelo):
     return render_to_response('formulario.html', {'formulario': formulario,
         'modelo': modelo, 'respuesta': respuesta}, context_instance=RequestContext(request))
 
+def editar(request, form, id, Model, respuesta, modelo):
+	item = Model.objects.get(id=id)
+	if request.method=="POST":
+		formulario = form(request.POST, instance=item)
+		if formulario.is_valid():
+			formulario.save()
+			return HttpResponseRedirect("/"+respuesta)
+	else:
+		formulario = form()
+	return render_to_response('editar.html', { 'modelo': modelo,
+		'formulario': formulario, 'valores': item, 'respuesta': respuesta },
+		 context_instance=RequestContext(request))
+
 def listaUsuarios(request):
     list = Usuario.objects.all()
     return render_to_response('usuarios/listaUsuarios.html', {'usuarios': list})
@@ -33,7 +46,13 @@ def listaCajaMenor(request):
 
 
 def agregarUsuario(request):
-	return agregar(request, UsuarioForm, respuesta = "usuarios", modelo = "Usuario")
+	return agregar(request, UsuarioForm, respuesta = "usuarios", modelo = "usuario")
 
 def agregarCajaMenor(request):
-    return agregar(request, CajaMenorForm, respuesta = "cajasMenores", modelo = "Caja Menor")
+    return agregar(request, CajaMenorForm, respuesta = "cajaMenor", modelo = "Caja Menor")
+
+def editarUsuario(request, id):
+	return editar(request, UsuarioForm, id, Usuario, respuesta = "usuarios", modelo = "usuario")
+
+def editarCajaMenor(request, id):
+	return editar(request, CajaMenorForm, id, CajaMenor, respuesta = "cajaMenor", modelo = "caja menor")

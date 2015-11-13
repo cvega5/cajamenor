@@ -22,9 +22,16 @@ urlpatterns = [
     url (r'^admin/', include(admin.site.urls)),
 
     url (r'^usuarios/$', views.listaUsuarios),
-    url(r'^nuevo$', views.agregarUsuario),
+    url(r'^nuevo/$', views.agregarUsuario),
     url(r'^usuarios/nuevo$', views.agregarUsuario),
 
+    url(r'^editaUsuario/(?P<id>\d+)/$', views.editarUsuario),
+    url(r'^usuarios/editaUsuario/(?P<id>\d+)/$', views.editarUsuario),
+
     url (r'^cajaMenor/$', views.listaCajaMenor),
+    url (r'^nueva/$', views.agregarCajaMenor),
     url (r'^cajaMenor/nueva$', views.agregarCajaMenor),
+
+    url(r'^editaCaja/(?P<id>\d+)/$', views.editarCajaMenor),
+    url(r'cajaMenor/editaCaja/(?P<id>\d+)/$', views.editarCajaMenor),
 ]

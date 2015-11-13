@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block content %}
-<h1 class="page-header">Usuarios</h1>    
-<table class="ui celled table">
+<h1 class="page-header">Usuarios</h1>
+<table class="table table-bordered">
   <thead>
   <tr>
     <th>ID</th>
@@ -9,6 +9,7 @@
     <th>Nombre</th>
     <th>Apellido</th>
     <th>Contrase&ntilde;a</th>
+    <th></th>
   </tr>
 </thead>
   <tbody>
@@ -19,6 +20,7 @@
       <td>{{Usuario.nombre}}</td>
       <td>{{Usuario.apellido}}</td>
       <td>{{Usuario.contrasena}}</td>
+      <td><a onclick="window.location.href='editaUsuario/{{Usuario.id}}'"><i class="glyphicon glyphicon-pencil"></i> Editar</a></td>
     </tr>
     {% endfor %}
   </tbody>
