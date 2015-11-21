@@ -25,8 +25,8 @@ urlpatterns = [
     url(r'^nuevo/$', views.agregarUsuario),
     url(r'^usuarios/nuevo$', views.agregarUsuario),
 
-    url(r'^editaUsuario/(?P<id>\d+)/$', views.editarUsuario),
-    url(r'^usuarios/editaUsuario/(?P<id>\d+)/$', views.editarUsuario),
+    url(r'^Usuario/(?P<id>\d+)/$', views.editarUsuario),
+    url(r'^usuarios/Usuario/(?P<id>\d+)/$', views.editarUsuario),
 
     url (r'^cajaMenor/$', views.listaCajaMenor),
     url (r'^nueva/$', views.agregarCajaMenor),
@@ -34,4 +34,11 @@ urlpatterns = [
 
     url(r'^editaCaja/(?P<id>\d+)/$', views.editarCajaMenor),
     url(r'cajaMenor/editaCaja/(?P<id>\d+)/$', views.editarCajaMenor),
+
+    url (r'^movimientos/$', views.listaMovimientos),
+    url(r'^nuevoMov/$', views.nuevoMovimiento),
+    url(r'^movimientos/nuevoMov$', views.nuevoMovimiento),
+
+    url(r'^editaUsuario/(?P<id>\d+)/$', views.editarUsuario),
+    url(r'^usuarios/editaUsuario/(?P<id>\d+)/$', views.editarUsuario),
 ]

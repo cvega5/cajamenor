@@ -10,7 +10,7 @@ def indexDefault(request):
     cajasMenores = CajaMenor.objects.all()
     movimientos = Movimiento.objects.all()
     return render_to_response('index.html', {
-    'usuarios': usuarios, 'cajasMenor': cajasMenores});
+    'usuarios': usuarios, 'cajasMenor': cajasMenores, 'movimientos': movimientos});
 
 def agregar(request, form, respuesta, modelo):
     if request.method=="POST":
@@ -31,8 +31,8 @@ def editar(request, form, id, Model, respuesta, modelo):
 			formulario.save()
 			return HttpResponseRedirect("/"+respuesta)
 	else:
-		formulario = form()
-	return render_to_response('editar.html', { 'modelo': modelo,
+		formulario = form(instance=item)
+	return render_to_response('ver-editar.html', { 'modelo': modelo, 'item': item.id,
 		'formulario': formulario, 'valores': item, 'respuesta': respuesta },
 		 context_instance=RequestContext(request))
 
@@ -44,15 +44,37 @@ def listaCajaMenor(request):
     list = CajaMenor.objects.all()
     return render_to_response('cajaMenor/listaCajaMenor.html', {'cajaMenor': list})
 
+def listaMovimientos(request):
+    list = Movimiento.objects.all()
+    list2 = Parametro.objects.all()
+    return render_to_response('movimiento/listaMovimientos.html', {'movimientos': list, 'parametros': list2})
+
 
 def agregarUsuario(request):
 	return agregar(request, UsuarioForm, respuesta = "usuarios", modelo = "usuario")
 
-def agregarCajaMenor(request):
-    return agregar(request, CajaMenorForm, respuesta = "cajaMenor", modelo = "Caja Menor")
-
 def editarUsuario(request, id):
 	return editar(request, UsuarioForm, id, Usuario, respuesta = "usuarios", modelo = "usuario")
 
+def agregarCajaMenor(request):
+    return agregar(request, CajaMenorForm, respuesta = "cajaMenor", modelo = "Caja Menor")
+
 def editarCajaMenor(request, id):
 	return editar(request, CajaMenorForm, id, CajaMenor, respuesta = "cajaMenor", modelo = "caja menor")
+
+
+def nuevoMovimiento(request):
+	if request.method=="POST":
+		masterForm = MovimientoForm(request.POST, request.FILES)
+		parametroForm = Parametro(request.POST, request.FILES)
+		if masterForm.is_valid():
+			masterForm.save()
+			if parametroForm.is_valid():
+				parametroForm.save()
+				return HttpResponseRedirect("/movimientos")
+	else:
+		masterForm = MovimientoForm()
+		parametroForm = Parametro()
+	return render_to_response('movimiento/movimiento.html', {'masterForm': masterForm,
+		'parametroForm': parametroForm, 'modelo': Movimiento, 'respuesta': movimientos},
+		context_instance=RequestContext(request))

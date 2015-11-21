@@ -22,11 +22,12 @@ class CajaMenor(models.Model):
 
 class Movimiento(models.Model):
     fecha = models.DateField()
-    valorTransaccion = models.DecimalField(max_digits=10, decimal_places=2)
-    valorEnLetras = models.CharField(max_length = 300)
-    descripcion = models.CharField(max_length = 300)
-    idRubro     = models.IntegerField(default = 0)
     cajamenor   = models.ForeignKey('CajaMenor')
+    descripcion = models.CharField(max_length = 300)
+    valorEnLetras = models.CharField(max_length = 300)
+    valorTransaccion = models.DecimalField(max_digits=10, decimal_places=2)
+    
+    idRubro     = models.IntegerField(default = 0)
     eliminado   = models.BooleanField(default=False)
 
     def __str__(self):

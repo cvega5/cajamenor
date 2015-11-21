@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+{% block content %}
+<h1 class="page-header">Usuarios</h1>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Caja menor</th>
+    <th>rubro</th>
+    <th>rubro</th>
+    <th>Total</th>
+    <th></th>
+  </tr>
+</thead>
+  <tbody>
+    {% for Movimiento in movimientos %}
+    <tr>
+      <td>{{Movimieno.id}}</td>
+      <td><a href="#" onclick="window.location.href='/cajaMenor'">{{Movimiento.cajamenor}}</a></td>
+      <td>{{Movimiento.nombre}}</td>
+      {% for parametros in detalles %}
+      <td>{{parametros.descripcion}}</td>
+      {% endfor %}
+      <td>$ {{Movimiento.valorTransaccion}}</td>
+      <td><a onclick="window.location.href='editaUsuario/{{Usuario.id}}'"><i class="glyphicon glyphicon-pencil"></i> Editar</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

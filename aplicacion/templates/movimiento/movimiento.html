@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% block content %}
+
+	<div class="row" style="width: 90%; margin: auto;">
+	    <div class="col-lg-12">
+	        <h1 class="page-header">
+	            Nuevo {{ modelo }}
+	        </h1>
+	        <ol class="breadcrumb">
+	            <li><a class="section" href="/"><i class="circular folder icon"></i>Inicio</a></li>
+	            <i class="right chevron icon divider"></i>
+	            <li><a class="section" href="/{{respuesta}}"><i class="circular folder icon"></i>{{modelo}}</a></li>
+	            <i class="right chevron icon divider"></i>
+	            <li class="active"><i class="circular folder open icon"></i> Nuevo</li>
+	        </ol>
+	    </div>
+	    <div class="col-lg-8">
+	    	<div class="ui form">
+	    	{% if masterForm %}
+	    		{% if masterForm.errors %}
+					{% if parametroForm.errors %}
+		    		<div class="ui negative message">
+			    	    <div class="header">error(es) en:</div>
+			    	    <ul class="list">
+									{% for error in parametroForm.errors %}
+			    	          <li>El campo <b>{{ error }}</b> es requerido.</li>
+										{% endfor %}
+										{% for error in masterForm.errors %}
+												<li>El campo <b>{{ error }}</b> es requerido.</li>
+			    	        {% endfor %}
+			    	    </ul>
+			    	</div>
+		    	{% endif %}
+					{% endif %}
+
+
+			    <form id="masterForm" method="post" enctype="multipart/form-data" action="">
+
+			    	{% csrf_token %}
+			    	{% for campo in masterForm %}
+			    	 	<div class="field">{{campo}}</div><br>
+			    	{% endfor %}
+
+						<form id="parametroForm" method="post" enctype="multipart/form-data" action="">
+							{% csrf_token %}
+							<div class="three fields">
+								{% for campo in parametroForm %}
+									<div class="field">{{campo}}</div><br>
+								{% endfor %}
+							</div>
+			    		    </div>
+			    		    <br>
+			    	        <button class="ui labeled icon button"><i class="add icon"></i> Agregar elemento adicional </button>
+			    	    </div>
+			    	</div>
+			    	<br>
+		    		<div class="ui buttons">
+		    			<input type="button" class="ui button" value="Cancelar" onclick="window.location.href='/{{respuesta}}'">
+		    		  	<div class="or" data-text="o"></div>
+		    		  	<input type="submit" class="ui positive button" value="Confirmar">
+		    		</div>
+						</form>
+				</form>
+		    {% endif %}
+		    </div>
+	    </div>
+	</div>
+{% endblock content %}
