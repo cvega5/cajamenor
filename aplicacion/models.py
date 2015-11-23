@@ -26,7 +26,7 @@ class Movimiento(models.Model):
     descripcion = models.CharField(max_length = 300)
     valorEnLetras = models.CharField(max_length = 300)
     valorTransaccion = models.DecimalField(max_digits=10, decimal_places=2)
-    
+
     idRubro     = models.IntegerField(default = 0)
     eliminado   = models.BooleanField(default=False)
 

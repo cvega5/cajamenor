@@ -16,8 +16,12 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 from aplicacion import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
+
+
     url(r'^$', views.indexDefault),
     url (r'^admin/', include(admin.site.urls)),
 
@@ -35,10 +39,13 @@ urlpatterns = [
     url(r'^editaCaja/(?P<id>\d+)/$', views.editarCajaMenor),
     url(r'cajaMenor/editaCaja/(?P<id>\d+)/$', views.editarCajaMenor),
 
-    url (r'^movimientos/$', views.listaMovimientos),
+    url(r'^movimientos/$', views.listaMovimientos),
     url(r'^nuevoMov/$', views.nuevoMovimiento),
-    url(r'^movimientos/nuevoMov$', views.nuevoMovimiento),
+    url(r'^movimientos/nuevoMov/$', views.nuevoMovimiento),
 
-    url(r'^editaUsuario/(?P<id>\d+)/$', views.editarUsuario),
-    url(r'^usuarios/editaUsuario/(?P<id>\d+)/$', views.editarUsuario),
-]
+    url(r'^movimiento/(?P<id>\d+)/$', views.editarmovimiento),
+
+    url(r'^$','aplicacion.views.indexDefault',name='incio'),
+    url(r'^login/$','auten.views.login_view',name='vista_login'),
+    url(r'^logout/$','auten.views.logout_view',name='vista_logout')
+]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

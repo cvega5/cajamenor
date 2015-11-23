@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block content %}
+<h1 class="page-header">Usuarios</h1>
+<table class="table table-hover">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Caja menor</th>
+    <th>Rubro</th>
+    <th>Descripcion</th>
+    <th>Fecha</th>
+    <th>Total</th>
+  </tr>
+</thead>
+  <tbody>
+    {% for Movimiento in movimientos %}
+    <tr onclick="window.location.href='/movimiento/{{Movimiento.id}}'">
+      <td>{{Movimiento.id}}</td>
+      <td>{{Movimiento.cajamenor}}</td>
+      <td>{{Movimiento.idRubro}}</td>
+      <td>{{Movimiento.descripcion}}</td>
+      <td>{{Movimiento.fecha}}</td>
+      <td>$ {{Movimiento.valorTransaccion}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}
