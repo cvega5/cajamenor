@@ -25,22 +25,17 @@
 			    	        {% for error in formulario.errors %}
 			    	            <li><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> El campo <b>{{ error }}</b> es requerido.</li>
 			    	        {% endfor %}
+										<li><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>{{mensaje}}</li>
 			    	    </ul>
 			    	</div>
 		    	{% endif %}
 			    <form id="formulario" method="post" enctype="multipart/form-data" action="" style="width: 50%">
-
 			    	{% csrf_token %}
-
+						<input type="submit" class="btn btn-success dropdown-toggle" value="Confirmar">
+						<input type="button" class="btn btn-danger dropdown-toggle" value="Cancelar" onclick="window.location.href='/{{respuesta}}'"><br><br>
 			    	{% for campo in formulario %}
 			    	 	{{campo}} <br><br>
 			    	{% endfor %}
-			    	<!--{{formulario.as_p}}-->
-			    	<p>
-
-			    		  <input type="submit" class="btn btn-success dropdown-toggle" value="Confirmar">
-								<input type="button" class="btn btn-danger dropdown-toggle" value="Cancelar" onclick="window.location.href='/{{respuesta}}'">
-			    	</p>
 			    </form>
 		    {% endif %}
 		    </div>

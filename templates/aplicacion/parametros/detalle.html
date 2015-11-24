@@ -1,0 +1,93 @@
+{% extends "index.html" %}
+{% block content %}
+
+	<script type="text/javascript">
+		document.getElementById('parametros').className = 'active';
+	</script>
+
+	<div class="row">
+		<div class="col-lg-12">
+		    <h1 class="page-header">
+		        Parametros
+		        <small>Listado de valores</small>
+		    </h1>
+		    <ol class="breadcrumb">
+	            <li><a class="section" href="/"><i class="circular folder icon"></i>Inicio</a></li>
+	            <i class="right chevron icon divider"></i>
+	            <li><a class="section" href="/parametros"><i class="circular folder icon"></i>Parametros</a></li>
+	            <i class="right chevron icon divider"></i>
+	            <li class="active"><i class="circular folder open icon"></i> {{cotizacion.id}}</li>
+	        </ol>
+		</div>
+		<div class="col-lg-12">
+				<ul class="list-unstyled">
+					<li class="active">
+						<div class="ui labeled button" tabindex="0">
+								<div class="blue ui button"  onclick="window.location.href='add-valor'"><i class="add icon"></i> Nuevo valor del parametro </div>
+								<a class="ui basic blue left pointing label">
+									{{valores|length}}
+								</a>
+						</div>
+					</li>
+				</ul>
+		</div>
+		<div class="col-lg-12">
+			<table class="ui selectable celled table">
+				<thead>
+			    	<tr>
+			    		<th>Código</th>
+			    		<th>Atributo</th>
+			    		<th>Descripcion</th>
+			    		<th>Estado</th>
+							<th>Acciones</th>
+			  		</tr>
+			  	</thead>
+				<tbody>
+					<tr>
+						<td>{{parametro.id}}</td>
+						<td>{{parametro.atributo}}</td>
+						<td>{{parametro.descripcion}}</td>
+						<td>{{parametro.estado}}</td>
+
+					</tr>
+			  	</tbody>
+			</table>
+			<h2>Valores de los parametros</h2>
+			<table class="ui selectable celled table">
+				<thead>
+			    	<tr>
+							<th>Código</th>
+			    		<th>Valor</th>
+			    		<th>Orden</th>
+			    		<th>Estado</th>
+							<th>Acciones</th>
+			  		</tr>
+			  	</thead>
+				<tbody>
+					{% for valor in valores %}
+					<tr>
+						<td width="30">{{valor.id}}</td>
+						<td>{{valor.valor}}</td>
+						<td>{{valor.orden}}</td>
+						<td>{{valor.estado}}</td>
+						<td>
+							<button type="button" class="ui yellow icon button" onclick="window.location.href='valor/edit/{{valor.id}}'"><i class="edit icon"></i></button>
+							<button type="button" class="ui negative icon button" onclick="window.location.href='valor/delete/{{valor.id}}'"><i class="remove icon"></i></button>
+						</td>
+					</tr>
+					{% endfor %}
+			  	</tbody>
+			</table>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+	    <div class="col-lg-12">
+			{% block form %}
+
+		    {% endblock form %}
+	    </div>
+	</div>
+
+
+{% endblock content %}

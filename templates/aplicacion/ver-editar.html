@@ -34,6 +34,7 @@
 			    	{% csrf_token %}
 						<p>
 								<input type="button" id="btn"  class="btn btn-primary  dropdown-toggle" value="editar" onclick="editar()">
+								{% if request.user.is_staff %}<input type="button" class="btn btn-danger dropdown-toggle" value="eliminar" onclick="window.location.href='/eliminar{{respuesta}}/{{item.id}}'">{% endif %}
 								<input type="button" class="btn btn-danger dropdown-toggle" value="Cancelar" onclick="window.location.href='/{{respuesta}}'">
 						</p>
 

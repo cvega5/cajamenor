@@ -31,6 +31,7 @@ urlpatterns = [
 
     url(r'^Usuario/(?P<id>\d+)/$', views.editarUsuario),
     url(r'^usuarios/Usuario/(?P<id>\d+)/$', views.editarUsuario),
+    url(r'^eliminarUsuario/(?P<id>\d+)/$', views.eliminarUsuario),
 
     url (r'^cajaMenor/$', views.listaCajaMenor),
     url (r'^nueva/$', views.agregarCajaMenor),
@@ -38,6 +39,7 @@ urlpatterns = [
 
     url(r'^editaCaja/(?P<id>\d+)/$', views.editarCajaMenor),
     url(r'cajaMenor/editaCaja/(?P<id>\d+)/$', views.editarCajaMenor),
+    url(r'^eliminarcajaMenor/(?P<id>\d+)/$', views.eliminarcajaMenor),
 
     url(r'^movimientos/$', views.listaMovimientos),
     url(r'^nuevoMov/$', views.nuevoMovimiento),
@@ -46,6 +48,12 @@ urlpatterns = [
     url(r'^movimiento/(?P<id>\d+)/$', views.editarmovimiento),
 
     url(r'^$','aplicacion.views.indexDefault',name='incio'),
+
     url(r'^login/$','auten.views.login_view',name='vista_login'),
-    url(r'^logout/$','auten.views.logout_view',name='vista_logout')
+    url(r'^logout/$','auten.views.logout_view',name='vista_logout'),
+
+    url(r'^parametros/$', 'aplicacion.views.parametrosIndex'),
+    url(r'^parametros/add$', 'aplicacion.views.agregarParametro'),
+    url(r'^parametros/(?P<id>\d+)/$', 'aplicacion.views.verParametro'),
+    url(r'^parametros/(?P<id>\d+)/add-valor$', 'aplicacion.views.agregarValorParametro'),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

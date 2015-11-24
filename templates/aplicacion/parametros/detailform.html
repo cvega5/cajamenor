@@ -1,0 +1,47 @@
+	{% extends  "aplicacion/parametros/detalle.html" %}
+	{% block form %}
+	<div class="row">
+	    <div class="col-lg-8">
+	    	<div class="ui form">
+	    	{% if formulario %}
+	    		{% if formulario.errors %}
+
+		    		<div class="ui negative message">
+			    	    <div class="header">Encontramos algunos problemas</div>
+			    	    <ul class="list">
+			    	        {% for error in formulario.errors %}
+			    	            <li>El campo <b>{{ error }}</b> es requerido.</li>
+			    	        {% endfor %}
+			    	    </ul>
+			    	</div>
+		    	{% endif %}
+			    <form id="formulario" method="post" enctype="multipart/form-data" action="">
+
+			    	{% csrf_token %}
+
+			    	{% for campo in formulario %}
+			    	 	<div class="field"><label>{{campo.label}}</label> {{campo}} </div>
+			    	{% endfor %}
+			    	<!--{{formulario.as_p}}-->
+			    	<p>
+
+
+			    		  <input type="submit" class="ui positive button" value="Confirmar">
+								<input type="button" class="ui primary button" value="Finalizar" onclick="window.location.href='/{{respuesta}}'">
+
+			    	</p>
+
+			    </form>
+		    {% endif %}
+		    </div>
+	    </div>
+	</div>
+
+	<br>
+
+
+	<script type="text/javascript">
+		document.getElementById('{{respuesta}}').className = 'active';
+	</script>
+
+	{%endblock form%}

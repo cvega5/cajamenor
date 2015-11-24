@@ -1,0 +1,63 @@
+{% extends "index.html" %}
+{% block content %}
+
+	<script type="text/javascript">
+		document.getElementById('parametros').className = 'active';
+	</script>
+
+	<div class="row">
+	    <div class="col-lg-12">
+	        <h1 class="page-header">
+	            Parametros
+	            <small>Listado de parametros</small>
+	        </h1>
+	        <ol class="breadcrumb">
+	            <li><a class="section" href="/"><i class="circular folder icon"></i>Inicio   </a></li>
+	            <i class="right chevron icon divider"></i>
+	            <li class="active"><i class="circular folder open icon"></i> Parametros</li>
+	        </ol>
+	    </div>
+	    <div class="col-lg-12">
+	        <ul class="list-unstyled">
+		        <li class="active">
+		        	<div class="ui labeled button" tabindex="0">
+	          			<div class="btn btn-success dropdown-toggle" onclick="window.location.href='add'"><i class="add icon"></i> Nuevo </div>
+	          			<a class="ui basic blue left pointing label">
+	            			{{parametros|length}}
+	          			</a>
+	        		</div>
+	        	</li>
+	        </ul>
+	    </div>
+	    <div class="col-lg-12">
+			<table class="ui selectable celled table">
+				<thead>
+			    	<tr>
+			    		<th>Código</th>
+			    		<th>Atributo</th>
+			    		<th>Descripcion</th>
+			    		<th>Estado</th>
+							<th>Acciones</th>
+			  		</tr>
+			  	</thead>
+				<tbody>
+					{% for parametro in parametros %}
+					<tr>
+						<td>{{parametro.id}}</td>
+						<td>{{parametro.atributo}}</td>
+						<td>{{parametro.descripcion}}</td>
+						<td>{{parametro.estado}}</td>
+						<td>
+							<div class="ui buttons">
+								<button type="button" class="ui default icon button" onclick="window.location.href='{{parametro.id}}'"><i class="external icon"></i></button>
+								<button type="button" class="ui yellow icon button" onclick="window.location.href='edit/{{parametro.id}}'"><i class="edit icon"></i></button>
+								{% if request.user.is_staff %}<button type="button" class="ui negative icon button" onclick="window.location.href='delete/{{parametro.id}}'"><i class="remove icon"></i></button>{% endif %}
+							</div>
+						</td>
+					</tr>
+					{% endfor %}
+			  	</tbody>
+			</table>
+	    </div>
+	</div>
+{% endblock content %}

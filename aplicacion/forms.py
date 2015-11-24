@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import *
 from aplicacion.models import *
+from django.contrib.auth.models import User
 
 class UsuarioForm(ModelForm):
     class Meta:
@@ -31,3 +32,31 @@ class MovimientoForm(ModelForm):
 		'valorEnLetras': TextInput(attrs={'placeholder': 'Dinero total asignado (en letras)', 'class': "form-control"}),
 		'valorTransaccion': TextInput(attrs={'placeholder': 'Dinero total asignado (en cantidad)', 'class': "form-control"}),
         'descripcion': Textarea(attrs={'placeholder': 'Uso del dinero', 'class': "form-control"})}
+
+class ParametroForm(ModelForm):
+	class Meta:
+		model = Parametro
+		fields = '__all__'
+		widgets = {
+		'atributo': TextInput(attrs={'placeholder': 'Atributo', 'class': "form-control"}),
+		'descripcion': Textarea(attrs={'placeholder': 'Descripcion', 'class': "form-control"}),
+		'estadoParametro': NumberInput(attrs={'placeholder': 'Estado',  'class': "form-control"}),}
+
+class ValorParametroForm(ModelForm):
+	class Meta:
+		model = ValorParametro
+		exclude = ('parametro', )
+		widgets = {
+		'valor': TextInput(attrs={'placeholder': 'Valor'}),
+		'orden': NumberInput(attrs={'placeholder': 'Estado'}),
+		'estado': NumberInput(attrs={'placeholder': 'Estado'}),}
+
+class eliminarUsuarioForm(ModelForm):
+	class Meta:
+		model = Usuario
+		fields = ('eliminado',)
+
+class eliminarCajaMenorForm(ModelForm):
+	class Meta:
+		model = CajaMenor
+		fields = ('eliminado',)
